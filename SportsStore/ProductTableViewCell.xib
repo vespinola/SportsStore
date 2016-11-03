@@ -23,6 +23,9 @@
                     </label>
                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hQS-x7-yIa">
                         <rect key="frame" x="190" y="8" width="94" height="29"/>
+                        <connections>
+                            <action selector="stockTextFieldDidChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="upM-Zp-iBd"/>
+                        </connections>
                     </stepper>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="umG-sW-2Ad">
                         <rect key="frame" x="292" y="7" width="61" height="30"/>
@@ -31,6 +34,9 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="stockTextFieldDidChange:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="Scc-pW-0eO"/>
+                        </connections>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnC-W3-PVf">
                         <rect key="frame" x="14" y="45" width="339" height="21"/>

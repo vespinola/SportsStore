@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ProductTableViewCellDelegate {
+    func updateStockLevel(stockLevel:Double?) -> Void
+}
+
 class ProductTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -15,6 +19,10 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var stockStepper: UIStepper!
     @IBOutlet weak var stockTextField: UITextField!
     
+    var stockTextFieldDidChange : (() -> Void )? = nil
+    var stockStepperDidChange : (() -> Void)? = nil
+    
+    var delegate:ProductTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +31,25 @@ class ProductTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
+    
+    
+    @IBAction func stockTextFieldDidChange(sender: AnyObject) {
+        var stockLevel:Double?
+        
+        if let stepper = sender as? UIStepper {
+            stockLevel = stepper.value
+            stockTextField.text = Int(stockLevel!).description
+        }else if let textfield = sender as? UITextView{
+            stockLevel = Double((textfield.text)!)
+            stockStepper.value = stockLevel!
+        }
+        
+        delegate?.updateStockLevel(stockLevel)
+        
+ 
+    }
+    
     
 }
